@@ -31,3 +31,4 @@ class CreateConversationUserTable extends Migration
         Schema::dropIfExists('conversation_user');
     }
 }
+

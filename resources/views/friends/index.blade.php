@@ -40,7 +40,7 @@
 
     @if($users->count())
         <div class="mt-4">
-            <h2>Firends</h2>
+            <h2>Friends</h2>
             <ul class="list-group">
                 @foreach($users as $friend)
                     <li class="list-group-item">{{ $friend->name }}
