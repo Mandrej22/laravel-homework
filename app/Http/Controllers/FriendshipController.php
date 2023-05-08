@@ -10,13 +10,11 @@ class FriendshipController extends Controller
 {
     public function index()
     {
+        $users = auth()->user()->friends;
         $friendRequests = auth()->user()->friendRequests;
+        $sentRequests = auth()->user()->sentRequests;
 
-        $users = User::whereNotIn('id', auth()->user()->friends->pluck('id')->toArray())
-            ->where('id', '!=', auth()->user()->id)
-            ->get();
-
-        return view('friends.index', compact('users', 'friendRequests'));
+        return view('friends.index', compact('users', 'friendRequests', "sentRequests"));
     }
 
     public function sendRequest(Request $request, User $user)
