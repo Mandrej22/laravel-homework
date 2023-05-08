@@ -10,11 +10,13 @@ class FriendshipController extends Controller
 {
     public function index()
     {
+        $friendRequests = auth()->user()->friendRequests;
+
         $users = User::whereNotIn('id', auth()->user()->friends->pluck('id')->toArray())
             ->where('id', '!=', auth()->user()->id)
             ->get();
 
-        return view('friends.index', compact('users'));
+        return view('friends.index', compact('users', 'friendRequests'));
     }
 
     public function sendRequest(Request $request, User $user)
@@ -51,5 +53,5 @@ class FriendshipController extends Controller
 
         return back()->with('success', 'Friend request rejected successfully.');
     }
-   
+
 }

@@ -10,7 +10,7 @@ class Conversation extends Model
     use HasFactory;
     public function users()
     {
-        return $this->belongsToMany(User::class, 'conversation_user');
+        return $this->belongsToMany(User::class, 'conversations_user');
     }
 
     public function messages()

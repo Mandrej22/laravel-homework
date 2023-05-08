@@ -29,13 +29,13 @@ class User extends Authenticatable
             ->wherePivot('status', 'accepted');
     }
 
-    public function friendRequests()
-    {
-        return $this->belongsToMany(User::class, 'friendships', 'friend_id', 'user_id')
-            ->withPivot('status')
-            ->withTimestamps()
-            ->wherePivot('status', 'pending');
-    }
+        public function friendRequests()
+        {
+            return $this->belongsToMany(User::class, 'friendships', 'friend_id', 'user_id')
+                ->withPivot('status')
+                ->withTimestamps()
+                ->wherePivot('status', 'pending');
+        }
 
     public function conversations()
     {
